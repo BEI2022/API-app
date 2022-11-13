@@ -1,17 +1,13 @@
 # R1 Identification of the problem you are trying to solve by building this particular app
-
-通过构建此特定应用程序确定您尝试解决的问题。  
+  
 My app is a real estate management system designed to bring together scattered listings of properties that are interested in selling or buying/renting and unify them for users to browse and select the homes they want.
 
 ## R2 Why is it a problem that needs solving?
-
-为什么这是一个需要解决的问题？  
+ 
 With the diversification of life or some force majeure factors (such as living in another state buyer/seller and during the covid period of lock dowm), resulting in many people do not want to go to the site to see the property like the original, only through the Internet way to learn about the desired property online, plus the original way of distributing paper flyers is too wasteful of resources, so through the online way has become increasingly popular in recent years, my program is to solve this problem of people do not want to go out and want to learn about the relevant properties.
 
 ## R3 Why have you chosen this database system. What are the drawbacks compared to others?
-
-为什么选择这个数据库系统。与其他人相比有什么缺点？  
-(Pestgrest与NO-SQL的区别)  
+ 
 The database I chose was PostgreSQL, the reason is that
 
 1. PostgreSQL was a database I had just learned and I could use it directly without spending time and effort to learn a completely new database.  
@@ -26,9 +22,7 @@ I think the drawbacks are
 2. Postgresql takes a long time to expand its capacity.
 
 ## R4 Identify and discuss the key functionalities and benefits of an ORM
-
-识别并讨论 ORM 的关键功能和好处  
-(1什么是ORM.2是干嘛的.3使用它的好处是什么)  
+ 
 ORM is short for Object-Relational-Mapper is a library that allows you to manipulate data in a database using an object-oriented approach.
 
 An ORM library is a library written in the language of your choice that has encapsulated the SQL code needed to manipulate the data, and you can interact directly with the database objects using the language of your choice.  
@@ -52,18 +46,17 @@ The benefits are
 
 ## R5 Document all endpoints for your API
 
-记录 API 的所有端点  
 @auth_bp.route('/users/', methods=['GET'])   Get all user information  
-@auth_bp.route('/register/', methods=['POST'])  User registration interface
-@auth_bp.route('/login/', methods=['POST'])  User Login Interface
-@comments_bp.route('/', methods=['GET'])  Get all user comments
-@comments_bp.route('/<int:property_id>/', methods=['GET'])  Get all comments based on a property
-@feature_bp.route('/', methods=['GET'])  Get all features
-@feature_bp.route('/<int:feature_id>', methods=['GET'])  Get all features of a property
-@feature_bp.route('/<int:id>', methods = ['PUT','PATCH']) Update comments
-@properties_bp.route('/', methods=['GET']) Get all properties
-@properties_bp.route('/<int:property_id>/', methods=['GET']) Get information about one property
-@properties_bp.route('/', methods=['POST']) Create a new property
+@auth_bp.route('/register/', methods=['POST'])  User registration interface  
+@auth_bp.route('/login/', methods=['POST'])  User Login Interface  
+@comments_bp.route('/', methods=['GET'])  Get all user comments  
+@comments_bp.route('/<int:property_id>/', methods=['GET'])  Get all comments based on a property  
+@feature_bp.route('/', methods=['GET'])  Get all features  
+@feature_bp.route('/<int:feature_id>', methods=['GET'])  Get all features of a property  
+@feature_bp.route('/<int:id>', methods = ['PUT','PATCH']) Update comments  
+@properties_bp.route('/', methods=['GET']) Get all properties  
+@properties_bp.route('/<int:property_id>/', methods=['GET']) Get information about one property  
+@properties_bp.route('/', methods=['POST']) Create a new property  
 @properties_bp.route('/<int:property_id>/', methods=['DELETE']) Delete a property
 @properties_bp.route('/<int:property_id>/', methods = ['PUT','PATCH']) Update a property
 @properties_bp.route('/<int:property_id>/features/', methods=['POST']) Update a property's features
@@ -92,7 +85,6 @@ properties and features table are many-to-many, a property property_features is 
 
 ## R7 Detail any third party services that your app will use
 
-详细说明您的应用将使用的任何第三方服务  
 
 bcrypt:This is a file encryption program that uses a hashing algorithm to convert plaintext passwords into unintelligible text to ensure the security of the password.
 
@@ -114,8 +106,6 @@ pip-review:This is a software that automatically checks if there are packages th
 
 ## R8 Describe your projects models in terms of the relationships they have with each other
 
-根据彼此之间的关系来描述您的项目模型  
-讨论SQLAlchemy模型和Marshmallow模式  
 According to my ERD, there are five data tables, User, Comment, Property, Features and property_features, where property_features is used as an associated table to connect property and features.
 
 SQLAlchenmy as an ORM turns User, Comment, Property, and Feature class objects in python into corresponding data tables in a database through relational mapping, and its unit of work consists of a transparent system of synchronizing all state changes between objects and their associated rows.
@@ -132,8 +122,6 @@ In the UserSchema Class because the type parameter needs to validate the data so
 
 ## R9 Discuss the database relations to be implemented in your application
 
-讨论要在您的应用程序中实现的数据库关系  
-讨论DB(表、列、关系、主键/外键)  
 According to ERD, in the User table there are id, name, Email, password, type and whether the column is admin, only the id as the primary key of the user table no foreign key.
 
 In the comment table, there are id, message, and date columns, with id as the primary key and user_id and property_id as foreign keys.
@@ -174,5 +162,6 @@ parents is features, Parent is Feature, children are properties.
 
 ## R10 Describe the way tasks are allocated and tracked in your project
 
-描述在您的项目中分配和跟踪任务的方式  
-解释trello过程
+
+https://trello.com/b/aS3cx4PE/api-project  
+There are 4 lists in my Trello: "TO DO", "IN PROGRESS", "CODE REVIEW", and "DONE". At the beginning of the project I divided the whole project into small goal cards and set the estimated completion time. Every morning I check the goal cards for the day and move the completed cards to another list in the evening. Finally, when all the goal cards were completed, my project was finished!
