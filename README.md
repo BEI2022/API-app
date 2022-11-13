@@ -1,4 +1,8 @@
-# R1 Identification of the problem you are trying to solve by building this particular app
+# My Repo
+
+https://github.com/BEI2022/API-app
+
+## R1 Identification of the problem you are trying to solve by building this particular app
   
 My app is a real estate management system designed to bring together scattered listings of properties that are interested in selling or buying/renting and unify them for users to browse and select the homes they want.
 
