@@ -10,9 +10,9 @@ auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 @auth_bp.route('/users/', methods=['GET'])
 def get_user():
-    stmt = db.select(User)
-    users = db.session.scalars(stmt)
-    return UserSchema(many=True, exclude= ['password']).dump(users)
+    stmt = db.select(User) # Create a new user selection object using Select
+    users = db.session.scalars(stmt) # Use session.scalars to call a new select object
+    return UserSchema(many=True, exclude= ['password']).dump(users) # Serialize Users and return them in dict format
 
 @auth_bp.route('/register/', methods=['POST'])
 def auth_register():
@@ -31,8 +31,8 @@ def auth_register():
 
 @auth_bp.route('/login/', methods=['POST'])
 def auth_login():
-    stmt = db.select(User).filter_by(email=request.json['email'])
-    user = db.session.scalar(stmt)
+    stmt = db.select(User).filter_by(email=request.json['email']) # using Select to create a new user selection object Filter condition set to email
+    user = db.session.scalar(stmt) # Use session.scalar to call a new select object
     if user and bcrypt.check_password_hash(user.password, request.json['password']):
         token = create_access_token(identity=str(user.id), expires_delta=timedelta(days=1))
         return {'email': user.email, 'token': token, 'type': user.type, 'is_admin': user.is_admin}
@@ -41,7 +41,7 @@ def auth_login():
 
 def authorize():
     user_id = get_jwt_identity()
-    stmt = db.select(User).filter_by(id=user_id)
-    user = db.session.scalar(stmt)
+    stmt = db.select(User).filter_by(id=user_id) # using Select to create a new user selection object Filter condition set to user_id
+    user = db.session.scalar(stmt) # Use session.scalar to call a new select object
     if not user.is_admin:
         abort(401)

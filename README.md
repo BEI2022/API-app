@@ -116,7 +116,7 @@ Take User class as an example. Modle as the default module to write the paramete
 
 primary_key is the column that every table must have as part of the primary key.relationship represents the connection between two ORM classes.
 
-In my program Marshmallow is a package to convert SQL statements into python language, i.e. serialization and deserialization. Use the dump() method to serialize the object and return the data in dict format and the dumps() method returns the data in json format. Use the load method to deserialize and return the dict format, and the same loads() method returns the json format.  
+In my program Marshmallow is a package to convert SQL statements into python language, i.e. serialization and deserialization. Use the dump() method convert a python object into JSON and additionally allows you to store the information into a file and the dumps() method returns a python object into a serialized JSON object. Use the load() method to Deserializes a JSON file object into a standard python object, and loads() method Deserializes a json object to a standard python object.
 
 In the UserSchema Class because the type parameter needs to validate the data so required=Ture.fields is the column to be displayed, ordered=True is the order in which it is written.
 
